@@ -9,6 +9,8 @@
     .navbar-brand-top .brand-top-menu-right { vertical-align: middle; position: relative; }
     .navbar.navbar-brand-top .row > div:first-child { flex: inherit;}
 }
+
+
 @media (min-width: 768px) {
     .feature-box-14 > div:nth-last-child(2) { border-bottom: 0}
 }
@@ -4699,6 +4701,7 @@
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
     /* slider image */
     .parallax {background-attachment: inherit; background-position: center;}
+    
 }
 
 /* ipad Landscape */
