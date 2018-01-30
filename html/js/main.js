@@ -1,5 +1,46 @@
 "use strict";
+
+
+<!--    CAROUSEL SCRIPT    -->
+        
+      $('#myCarousel').carousel({
+  interval: 4000
+})
+
+$('.carousel .item').each(function(){
+  var next = $(this).next();
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo($(this));
+  
+  for (var i=0;i<2;i++) {
+    next=next.next();
+    if (!next.length) {
+    	next = $(this).siblings(':first');
+  	}
+    
+    next.children(':first-child').clone().appendTo($(this));
+  }
+});
+<!--CAROUSEL SCRIPT-->
+
+// Script for Video
+
+function btn(){
+              var player = document.getElementById('videopl');
+                  player.src = "http://players.brightcove.net/756700387001/default_default/index.html?videoId=5708344541001";
+                 
+            var btnh = document.getElementById('btn-hide');
+                btnh.style.display = 'none';
+              }
+
+
+// Script for video
+
 var lastScroll = 0;
+
+
 
 //check for browser os
 var isMobile = false;
