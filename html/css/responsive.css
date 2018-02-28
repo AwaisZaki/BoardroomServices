@@ -46,7 +46,7 @@
     .grid-item.feature-box-4 figure figcaption {width: 90%; padding: 0 0 15px 30px}
 
     /* menu center */
-    .menu-center .header-social-icon a i, .menu-center .header-searchbar a i {margin: 0 8px;}
+    .menu-center .header-social-icon a i, .menu-center .header-searchbar a i {margin: 0 5px;}
     .menu-center .header-social-icon {padding-left: 10px}
     .menu-center .header-searchbar { padding-left: 0; padding-right: 5px;}
     .menu-center .header-social-icon {margin-left: 0}
