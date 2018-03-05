@@ -13,6 +13,7 @@
 
 @media (min-width: 768px) {
     .feature-box-14 > div:nth-last-child(2) { border-bottom: 0}
+    
 }
 
 @media (max-width: 1500px) {
@@ -3068,6 +3069,12 @@
 }
 
 @media (max-width: 767px) {
+    .col-centered {
+    display: block;
+    float: none;
+    text-align: left;
+    margin-right: -4px;
+}
 
     body { font-size: 12px; line-height: 20px}
 
