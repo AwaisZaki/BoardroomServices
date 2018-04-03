@@ -1,41 +1,157 @@
 "use strict";
 
 
-<!--    CAROUSEL SCRIPT    -->
-        
-      $('#myCarousel').carousel({
-  interval: 4000
+// Script for API
+$(document).ready(function () {
+    getToken().then((resp) => {
+        console.log('response', resp);
+        if (resp) {
+            getMedia(resp.token).then(data => {
+                if (data) {
+                    var holdingSlide = data;
+                    console.log(holdingSlide);
+                   for (var i = 0; i < 6; i++) {
+                    //    console.log('sss', data[i].holdingSlide.path);
+                       console.log('data' )
+                    // console.log("data ", data[i].holdingSlide.path);
+                   }
+                // console.log(data);
+                }
+            })
+                .catch(e => {
+                    console.log('get media api is not working', e);
+                })
+        }
+        else {
+            console.log('token not found');
+        }
+    }).catch(e => {
+        console.log('error', e);
+    });
+});
+
+function getToken() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api-staging.boardroom.media/v3/auth",
+        "method": "POST",
+        "headers": {
+            "authorization": "Basic NWE3YmVmMzk5ZjExMzg1ZGQxYThiYTQ2OmhqMzQtMjM0ZC0zNDM0",
+            "cache-control": "no-cache",
+            "postman-token": "521fa0e6-0615-7b7b-8c00-6f7ee11625ed"
+        }
+    }
+
+    return new Promise((resolve, reject) => {
+        $.ajax(settings).done(function (response) {
+            if (response.token) {
+                resolve(response.token);
+            }
+            else {
+                reject(response);
+            }
+        });
+    })
+}
+function getMedia(token) {
+    var header = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api-staging.boardroom.media/v3/broadcast",
+        "method": "GET",
+        "headers": {
+            "x-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJCb2FyZHJvb20uTWVkaWEgV2Vic2l0ZSAoQVBJVjMpIiwib3duZXIiOiI1YTdiZWYzOTlmMTEzODVkZDFhOGJhNDYiLCJzZXR0aW5ncyI6eyJzaGFyZSI6WyI1ODA1YzRiMzMxZTZmOWNhZDgzNzVkZGEiLCI1NzI2ZmZlYzYwNzFjYjZlYzQ3YWM4ZjkiLCI1YTljZDQ4ZTlmMTEzODVkZDFhOGJkMWUiXX0sInJvbGUiOiIiLCJjb25uZWN0aW9uIjoiR2VuZXJhbCIsImlhdCI6MTUyMjU5MjQyMywiZXhwIjoxNTIyNjI4NDIzLCJhdWQiOiJodHRwOi8vYXBpLmJvYXJkcm9vbS5tZWRpYS8ifQ.764UAbOHhsAfnYXo_HiHZ4CuyyC0q7_4k68pNuijAfw",
+            "cache-control": "no-cache",
+            "postman-token": "ddd99b9f-fd0f-dda3-7d24-9452ecd5e7f7"
+        }
+    }
+
+    return new Promise((resolve, reject) => {
+        $.ajax(header).done(function (response) {
+            if (response.success) {
+                resolve(response.items);
+            }
+            else {
+                reject(response);
+            }
+        });
+    })
+}
+// CAROUSEL SCRIPT 
+
+$('#myCarousel').carousel({
+    interval: 4000
 })
 
-$('.carousel .item').each(function(){
-  var next = $(this).next();
-  if (!next.length) {
-    next = $(this).siblings(':first');
-  }
-  next.children(':first-child').clone().appendTo($(this));
-  
-  for (var i=0;i<2;i++) {
-    next=next.next();
+$('.carousel .item').each(function () {
+    var next = $(this).next();
     if (!next.length) {
-    	next = $(this).siblings(':first');
-  	}
-    
+        next = $(this).siblings(':first');
+    }
     next.children(':first-child').clone().appendTo($(this));
-  }
+
+    for (var i = 0; i < 2; i++) {
+        next = next.next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+
+        next.children(':first-child').clone().appendTo($(this));
+    }
 });
-<!--CAROUSEL SCRIPT-->
+// CAROUSEL SCRIPT
+//        Script for Date time              
+var hour = function () {
+    var hrs = new Date();
+    var getHr = hrs.getHours();
+    let hor = getHr % 12
+    console.log("hours", hor)
+    var getMin = hrs.getMinutes();
+    console.log(hrs + " " + getHr + " " + getMin);
+    if (hor > 12) {
+
+        document.getElementById('hrs').innerHTML = hor;
+        document.getElementById('ampm').innerHTML = 'AM'
+        document.getElementById('min').innerHTML = getMin;
+
+
+    }
+    else {
+        document.getElementById('ampm').innerHTML = 'PM';
+
+
+        document.getElementById('hrs').innerHTML = hor;
+        document.getElementById('min').innerHTML = getMin;
+
+
+
+    }
+
+
+
+}
+
 
 // Script for Video
 
-function btn(){
-              var player = document.getElementById('videopl');
-                  player.src = "http://players.brightcove.net/756700387001/default_default/index.html?videoId=5708344541001";
-                 
-            var btnh = document.getElementById('btn-hide');
-                btnh.style.display = 'none';
-              }
+//Index page video
+function btn() {
+    var player = document.getElementById('videopl');
+    player.src = "http://players.brightcove.net/756700387001/default_default/index.html?videoId=5708344541001";
 
+    var btnh = document.getElementById('btn-hide');
+    btnh.style.display = 'none';
+}
 
+//Request a call page video
+function btnrequest() {
+    var player = document.getElementById('request');
+    player.src = "https://www-boardroom-services.filesusr.com/html/53a1dc_e64cc72ca260868a5d5837f5abf62c21.html";
+
+    var btnh = document.getElementById('btn-hide');
+    btnh.style.display = 'none';
+}
 // Script for video
 
 var lastScroll = 0;
@@ -135,8 +251,8 @@ function init_scroll_navigate() {
     //background color slider Start
     /*==============================================================*/
     var $window = $(window),
-            $body = $('.bg-background-fade'),
-            $panel = $('.color-code');
+        $body = $('.bg-background-fade'),
+        $panel = $('.color-code');
     var scroll = $window.scrollTop() + ($window.height() / 2);
     $panel.each(function () {
         var $this = $(this);
@@ -893,13 +1009,13 @@ $(document).ready(function () {
         var target = this.hash;
         if ($(target).length != 0) {
             $('html, body').stop()
-                    .animate({
-                        'scrollTop': $(target)
-                                .offset()
-                                .top
-                    }, scrollAnimationTime, scrollAnimation, function () {
-                        window.location.hash = target;
-                    });
+                .animate({
+                    'scrollTop': $(target)
+                        .offset()
+                        .top
+                }, scrollAnimationTime, scrollAnimation, function () {
+                    window.location.hash = target;
+                });
         }
     });
 
@@ -916,9 +1032,9 @@ $(document).ready(function () {
                 var target = _this.attr("href");
                 if ($(target).length > 0) {
                     $('html, body').stop()
-                    .animate({
-                        'scrollTop': $(target).offset().top
-                    });
+                        .animate({
+                            'scrollTop': $(target).offset().top
+                        });
                 }
             }, 500);
         });
@@ -1709,8 +1825,8 @@ $(document).ready(function () {
     });
 
     var menuRight = document.getElementById('cbp-spmenu-s2'),
-            showRightPush = document.getElementById('showRightPush'),
-            body = document.body;
+        showRightPush = document.getElementById('showRightPush'),
+        body = document.body;
     if (showRightPush) {
         showRightPush.onclick = function () {
             classie.toggle(this, 'active');
@@ -2353,8 +2469,8 @@ $(document).ready(function () {
     //demo button  - START CODE
     /*==============================================================*/
 
-//    var $buythemediv = '<div class="buy-theme alt-font sm-display-none"><a href="https://themeforest.net/item/pofo-creative-agency-corporate-and-portfolio-multipurpose-template/20645944?ref=themezaa" target="_blank"><i class="ti-shopping-cart"></i><span>Buy Theme</span></a></div><div class="all-demo alt-font sm-display-none"><a href="mailto:info@themezaa.com?subject=POFO – Creative Agency, Corporate and Portfolio Multi-purpose Template - Quick Question"><i class="ti-email"></i><span>Quick Question?</span></a></div>';
-//    $('body').append($buythemediv);
+    //    var $buythemediv = '<div class="buy-theme alt-font sm-display-none"><a href="https://themeforest.net/item/pofo-creative-agency-corporate-and-portfolio-multipurpose-template/20645944?ref=themezaa" target="_blank"><i class="ti-shopping-cart"></i><span>Buy Theme</span></a></div><div class="all-demo alt-font sm-display-none"><a href="mailto:info@themezaa.com?subject=POFO – Creative Agency, Corporate and Portfolio Multi-purpose Template - Quick Question"><i class="ti-email"></i><span>Quick Question?</span></a></div>';
+    //    $('body').append($buythemediv);
 
     /*==============================================================*/
     //demo button  - END CODE
@@ -2375,16 +2491,16 @@ $(window).load(function () {
         setTimeout(function () {
             $(window).imagesLoaded(function () {
                 var scrollAnimationTime = 1200,
-                        scrollAnimation = 'easeInOutExpo';
+                    scrollAnimation = 'easeInOutExpo';
                 var target = '#' + hash;
                 if ($(target).length > 0) {
 
                     $('html, body').stop()
-                            .animate({
-                                'scrollTop': $(target).offset().top
-                            }, scrollAnimationTime, scrollAnimation, function () {
-                                window.location.hash = target;
-                            });
+                        .animate({
+                            'scrollTop': $(target).offset().top
+                        }, scrollAnimationTime, scrollAnimation, function () {
+                            window.location.hash = target;
+                        });
                 }
             });
         }, 500);
