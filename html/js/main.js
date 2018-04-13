@@ -61,7 +61,7 @@ function getMedia(token) {
         "url": "https://api-staging.boardroom.media/v3/broadcast",
         "method": "GET",
         "headers": {
-            "x-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJCb2FyZHJvb20uTWVkaWEgV2Vic2l0ZSAoQVBJVjMpIiwib3duZXIiOiI1YTdiZWYzOTlmMTEzODVkZDFhOGJhNDYiLCJzZXR0aW5ncyI6eyJzaGFyZSI6WyI1ODA1YzRiMzMxZTZmOWNhZDgzNzVkZGEiLCI1NzI2ZmZlYzYwNzFjYjZlYzQ3YWM4ZjkiLCI1YTljZDQ4ZTlmMTEzODVkZDFhOGJkMWUiXX0sInJvbGUiOiIiLCJjb25uZWN0aW9uIjoiR2VuZXJhbCIsImlhdCI6MTUyMjU5MjQyMywiZXhwIjoxNTIyNjI4NDIzLCJhdWQiOiJodHRwOi8vYXBpLmJvYXJkcm9vbS5tZWRpYS8ifQ.764UAbOHhsAfnYXo_HiHZ4CuyyC0q7_4k68pNuijAfw",
+            "x-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJCb2FyZHJvb20uTWVkaWEgV2Vic2l0ZSAoQVBJVjMpIiwib3duZXIiOiI1YTdiZWYzOTlmMTEzODVkZDFhOGJhNDYiLCJzZXR0aW5ncyI6eyJzaGFyZSI6WyI1ODA1YzRiMzMxZTZmOWNhZDgzNzVkZGEiLCI1NzI2ZmZlYzYwNzFjYjZlYzQ3YWM4ZjkiLCI1YTljZDQ4ZTlmMTEzODVkZDFhOGJkMWUiXX0sInJvbGUiOiIiLCJjb25uZWN0aW9uIjoiR2VuZXJhbCIsImlhdCI6MTUyMjk5MzYzOCwiZXhwIjoxNTIzMDI5NjM4LCJhdWQiOiJodHRwOi8vYXBpLmJvYXJkcm9vbS5tZWRpYS8ifQ.WDHMh2Os5oh41B_Fn1WNYth4vpkQYJnzXNS8fuY6jBo",
             "cache-control": "no-cache",
             "postman-token": "ddd99b9f-fd0f-dda3-7d24-9452ecd5e7f7"
         }
