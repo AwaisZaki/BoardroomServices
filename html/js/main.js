@@ -1,21 +1,49 @@
 "use strict";
+// function onClickChange() {
+//     console.log(document.getElementsByClassName('links'));
+//     var links = document.getElementsByClassName('links');
+//     // links[2].href = "https://www.google.com";
+//     console.log(links);
+// }
+
+// Script for Braodcast
+var links = document.getElementsByClassName('links');
+var images = document.getElementsByClassName('brr-image');
 
 
-// Script for API
 $(document).ready(function () {
     getToken().then((resp) => {
-        console.log('response', resp);
+        console.log('response ABC ', resp);
         if (resp) {
             getMedia(resp.token).then(data => {
                 if (data) {
+                    // console.log("data===>", data)
                     var holdingSlide = data;
-                    console.log(holdingSlide);
-                   for (var i = 0; i < 6; i++) {
-                    //    console.log('sss', data[i].holdingSlide.path);
-                       console.log('data' )
-                    // console.log("data ", data[i].holdingSlide.path);
-                   }
-                // console.log(data);
+                    // console.log(holdingSlide);
+                    // console.log(data[0].url);
+                    for (var i = 0; i < 6; i++) {
+
+                        links[i].href = data[i].url;
+                        // console.log(links[i]);
+                        images[i].src = "http://brrmedia-assets.s3.amazonaws.com/" + data[i].videoThumb.path;
+                        // console.log(data[i].videoThumb);
+                        // console.log("URL 0 ======> ", data[0].url, "Image URL ======> ", data[0].videoThumb, " Release Time ======> ",data[0].releaseTime);
+                        var sortingData = data[i].releaseTime
+                        // console.log(sortingData);
+                        myArray = _.sortBy(data[i].releaseTime, function (dateObj) {
+                            return new Date(dateObj.date);
+                        });
+                        console.log(myArray);
+                        console.log(data[i].releaseTime);
+
+
+                        // console.log("urlllllll===", data[i].videoThumb.path)
+                        //    console.log('sss', data[i].holdingSlide.path);
+
+                        //    console.log('data' )
+                        // console.log("data ", data[i].holdingSlide.path);
+                    }
+                    // console.log(data);
                 }
             })
                 .catch(e => {
@@ -58,10 +86,12 @@ function getMedia(token) {
     var header = {
         "async": true,
         "crossDomain": true,
+        // "url": "https://api-staging.boardroom.media/v3/broadcast",
+        // "url": "https://api-staging.boardroom.media/v3/broadcast?page=1&pageSize=8",
         "url": "https://api-staging.boardroom.media/v3/broadcast",
         "method": "GET",
         "headers": {
-            "x-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJCb2FyZHJvb20uTWVkaWEgV2Vic2l0ZSAoQVBJVjMpIiwib3duZXIiOiI1YTdiZWYzOTlmMTEzODVkZDFhOGJhNDYiLCJzZXR0aW5ncyI6eyJzaGFyZSI6WyI1ODA1YzRiMzMxZTZmOWNhZDgzNzVkZGEiLCI1NzI2ZmZlYzYwNzFjYjZlYzQ3YWM4ZjkiLCI1YTljZDQ4ZTlmMTEzODVkZDFhOGJkMWUiXX0sInJvbGUiOiIiLCJjb25uZWN0aW9uIjoiR2VuZXJhbCIsImlhdCI6MTUyMjk5MzYzOCwiZXhwIjoxNTIzMDI5NjM4LCJhdWQiOiJodHRwOi8vYXBpLmJvYXJkcm9vbS5tZWRpYS8ifQ.WDHMh2Os5oh41B_Fn1WNYth4vpkQYJnzXNS8fuY6jBo",
+            "x-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJCb2FyZHJvb20uTWVkaWEgV2Vic2l0ZSAoQVBJVjMpIiwib3duZXIiOiI1YTdiZWYzOTlmMTEzODVkZDFhOGJhNDYiLCJzZXR0aW5ncyI6eyJzaGFyZSI6WyI1ODA1YzRiMzMxZTZmOWNhZDgzNzVkZGEiLCI1NzI2ZmZlYzYwNzFjYjZlYzQ3YWM4ZjkiLCI1YTljZDQ4ZTlmMTEzODVkZDFhOGJkMWUiXX0sInJvbGUiOiIiLCJjb25uZWN0aW9uIjoiR2VuZXJhbCIsImlhdCI6MTUyNDIwMjY5MiwiZXhwIjoxNTI0MjM4NjkyLCJhdWQiOiJodHRwOi8vYXBpLmJvYXJkcm9vbS5tZWRpYS8ifQ.6RcXDsbieL4Q343nKuE6U0cWsfP_MxxQUnDqvjetbDE",
             "cache-control": "no-cache",
             "postman-token": "ddd99b9f-fd0f-dda3-7d24-9452ecd5e7f7"
         }
@@ -71,6 +101,7 @@ function getMedia(token) {
         $.ajax(header).done(function (response) {
             if (response.success) {
                 resolve(response.items);
+                // console.log("Response ");
             }
             else {
                 reject(response);
@@ -78,6 +109,94 @@ function getMedia(token) {
         });
     })
 }
+
+// script for broadcast
+
+
+// Script for article
+var articlesLink = document.getElementsByClassName('articles_link');
+var articlesImg = document.getElementsByClassName('articles_img');
+
+console.log(articlesLink, articlesImg);
+$(document).ready(function () {
+    getTokens().then((resp) => {
+        console.log('response ABC ', resp);
+        if (resp) {
+            getArticles(resp.token).then(data => {
+                if (data) {
+
+                    var holdingSlide = data;
+
+                    for (var i = 0; i < 6; i++) {
+
+                        console.log("data articles ", data[i].url);
+                    }
+
+                }
+            })
+                .catch(e => {
+                    console.log('get media api is not working', e);
+                })
+        }
+        else {
+            console.log('token not found');
+        }
+    }).catch(e => {
+        console.log('error', e);
+    });
+});
+
+function getTokens() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api-staging.boardroom.media/v3/auth",
+        "method": "POST",
+        "headers": {
+            "authorization": "Basic NWE3YmVmMzk5ZjExMzg1ZGQxYThiYTQ2OmhqMzQtMjM0ZC0zNDM0",
+            "cache-control": "no-cache",
+            "postman-token": "521fa0e6-0615-7b7b-8c00-6f7ee11625ed"
+        }
+    }
+
+    return new Promise((resolve, reject) => {
+        $.ajax(settings).done(function (response) {
+            if (response.token) {
+                resolve(response.token);
+            }
+            else {
+                reject(response);
+            }
+        });
+    })
+}
+function getArticles(token) {
+    var header = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api-staging.boardroom.media/v3/article",
+        "method": "GET",
+        "headers": {
+            "x-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJCb2FyZHJvb20uTWVkaWEgV2Vic2l0ZSAoQVBJVjMpIiwib3duZXIiOiI1YTdiZWYzOTlmMTEzODVkZDFhOGJhNDYiLCJzZXR0aW5ncyI6eyJzaGFyZSI6WyI1ODA1YzRiMzMxZTZmOWNhZDgzNzVkZGEiLCI1NzI2ZmZlYzYwNzFjYjZlYzQ3YWM4ZjkiLCI1YTljZDQ4ZTlmMTEzODVkZDFhOGJkMWUiXX0sInJvbGUiOiIiLCJjb25uZWN0aW9uIjoiR2VuZXJhbCIsImlhdCI6MTUyNDAzODcxNSwiZXhwIjoxNTI0MDc0NzE1LCJhdWQiOiJodHRwOi8vYXBpLmJvYXJkcm9vbS5tZWRpYS8ifQ.eABq5_nshDgH2ysisab6MrqcAlAqcYWJAVRIRYrixEQ",
+            "cache-control": "no-cache",
+            "postman-token": "ddd99b9f-fd0f-dda3-7d24-9452ecd5e7f7"
+        }
+    }
+
+    return new Promise((resolve, reject) => {
+        $.ajax(header).done(function (response) {
+            if (response.success) {
+                resolve(response.items);
+                // console.log("Response ");
+            }
+            else {
+                reject(response);
+            }
+        });
+    })
+}
+
+// script for article
 // CAROUSEL SCRIPT 
 
 $('#myCarousel').carousel({
@@ -1661,6 +1780,51 @@ $(document).ready(function () {
                     $("#success-project-contact-form").html(result);
                     $("#success-project-contact-form").fadeIn("slow");
                     $('#success-project-contact-form').delay(4000).fadeOut("slow");
+                }
+            });
+        }
+    });
+    function ValidationProjectContactForm() {
+        var error = true;
+        $('#project-contact-form input[type=text]').each(function (index) {
+            if (index == 0) {
+                if ($(this).val() == null || $(this).val() == "") {
+                    $("#project-contact-form").find("input:eq(" + index + ")").addClass("required-error");
+                    error = false;
+                } else {
+                    $("#project-contact-form").find("input:eq(" + index + ")").removeClass("required-error");
+                }
+            } else if (index == 2) {
+                if (!(/(.+)@(.+){2,}\.(.+){2,}/.test($(this).val()))) {
+                    $("#project-contact-form").find("input:eq(" + index + ")").addClass("required-error");
+                    error = false;
+                } else {
+                    $("#project-contact-form").find("input:eq(" + index + ")").removeClass("required-error");
+                }
+            }
+
+        });
+        return error;
+    }
+
+    //Project Contact us form 2
+    $('#project-contact-us-4-button').on("click", function () {
+        var error = ValidationProjectContactForm4();
+        if (error) {
+            $.ajax({
+                type: "POST",
+                url: "email-templates/project-contact.php",
+                data: $("#project-contact-form-4").serialize(),
+                success: function (result) {
+                    // Un-comment below code to redirect user to thank you page.
+                    //window.location.href="thank-you.html";
+
+                    $('input[type=text],textarea').each(function () {
+                        $(this).val('');
+                    })
+                    $("#success-project-contact-form-4").html(result);
+                    $("#success-project-contact-form-4").fadeIn("slow");
+                    $('#success-project-contact-form-4').delay(4000).fadeOut("slow");
                 }
             });
         }
