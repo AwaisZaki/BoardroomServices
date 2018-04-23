@@ -91,7 +91,7 @@ function getMedia(token) {
         "url": "https://api-staging.boardroom.media/v3/broadcast",
         "method": "GET",
         "headers": {
-            "x-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJCb2FyZHJvb20uTWVkaWEgV2Vic2l0ZSAoQVBJVjMpIiwib3duZXIiOiI1YTdiZWYzOTlmMTEzODVkZDFhOGJhNDYiLCJzZXR0aW5ncyI6eyJzaGFyZSI6WyI1ODA1YzRiMzMxZTZmOWNhZDgzNzVkZGEiLCI1NzI2ZmZlYzYwNzFjYjZlYzQ3YWM4ZjkiLCI1YTljZDQ4ZTlmMTEzODVkZDFhOGJkMWUiXX0sInJvbGUiOiIiLCJjb25uZWN0aW9uIjoiR2VuZXJhbCIsImlhdCI6MTUyNDIwMjY5MiwiZXhwIjoxNTI0MjM4NjkyLCJhdWQiOiJodHRwOi8vYXBpLmJvYXJkcm9vbS5tZWRpYS8ifQ.6RcXDsbieL4Q343nKuE6U0cWsfP_MxxQUnDqvjetbDE",
+            "x-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJCb2FyZHJvb20uTWVkaWEgV2Vic2l0ZSAoQVBJVjMpIiwib3duZXIiOiI1YTdiZWYzOTlmMTEzODVkZDFhOGJhNDYiLCJzZXR0aW5ncyI6eyJzaGFyZSI6WyI1ODA1YzRiMzMxZTZmOWNhZDgzNzVkZGEiLCI1NzI2ZmZlYzYwNzFjYjZlYzQ3YWM4ZjkiLCI1YTljZDQ4ZTlmMTEzODVkZDFhOGJkMWUiXX0sInJvbGUiOiIiLCJjb25uZWN0aW9uIjoiR2VuZXJhbCIsImlhdCI6MTUyNDMxMTc1OSwiZXhwIjoxNTI0MzQ3NzU5LCJhdWQiOiJodHRwOi8vYXBpLmJvYXJkcm9vbS5tZWRpYS8ifQ.y44DrysP3x1PFhfnC0EluMi357rsvJfV8zBE2A11V-U",
             "cache-control": "no-cache",
             "postman-token": "ddd99b9f-fd0f-dda3-7d24-9452ecd5e7f7"
         }
@@ -177,7 +177,7 @@ function getArticles(token) {
         "url": "https://api-staging.boardroom.media/v3/article",
         "method": "GET",
         "headers": {
-            "x-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJCb2FyZHJvb20uTWVkaWEgV2Vic2l0ZSAoQVBJVjMpIiwib3duZXIiOiI1YTdiZWYzOTlmMTEzODVkZDFhOGJhNDYiLCJzZXR0aW5ncyI6eyJzaGFyZSI6WyI1ODA1YzRiMzMxZTZmOWNhZDgzNzVkZGEiLCI1NzI2ZmZlYzYwNzFjYjZlYzQ3YWM4ZjkiLCI1YTljZDQ4ZTlmMTEzODVkZDFhOGJkMWUiXX0sInJvbGUiOiIiLCJjb25uZWN0aW9uIjoiR2VuZXJhbCIsImlhdCI6MTUyNDAzODcxNSwiZXhwIjoxNTI0MDc0NzE1LCJhdWQiOiJodHRwOi8vYXBpLmJvYXJkcm9vbS5tZWRpYS8ifQ.eABq5_nshDgH2ysisab6MrqcAlAqcYWJAVRIRYrixEQ",
+            "x-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJCb2FyZHJvb20uTWVkaWEgV2Vic2l0ZSAoQVBJVjMpIiwib3duZXIiOiI1YTdiZWYzOTlmMTEzODVkZDFhOGJhNDYiLCJzZXR0aW5ncyI6eyJzaGFyZSI6WyI1ODA1YzRiMzMxZTZmOWNhZDgzNzVkZGEiLCI1NzI2ZmZlYzYwNzFjYjZlYzQ3YWM4ZjkiLCI1YTljZDQ4ZTlmMTEzODVkZDFhOGJkMWUiXX0sInJvbGUiOiIiLCJjb25uZWN0aW9uIjoiR2VuZXJhbCIsImlhdCI6MTUyNDMxMTc1OSwiZXhwIjoxNTI0MzQ3NzU5LCJhdWQiOiJodHRwOi8vYXBpLmJvYXJkcm9vbS5tZWRpYS8ifQ.y44DrysP3x1PFhfnC0EluMi357rsvJfV8zBE2A11V-U",
             "cache-control": "no-cache",
             "postman-token": "ddd99b9f-fd0f-dda3-7d24-9452ecd5e7f7"
         }
